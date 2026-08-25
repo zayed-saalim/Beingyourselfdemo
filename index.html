@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Being Yourself — Saalim Zayed</title>
+
+    <!-- Google Fonts: Elegant serif + clean sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        /* ---------- DESIGN SYSTEM & VARIABLES ---------- */
+        :root {
+            --bg-base: #050404; /* Deepest warm black */
+            --bg-surface: rgba(22, 19, 17, 0.45); /* Glass surface */
+            --gold-primary: #d3b48f; /* Elegant champagne gold */
+            --gold-muted: rgba(211, 180, 143, 0.5);
+            --gold-glow: rgba(211, 180, 143, 0.15);
+            --border-light: rgba(211, 180, 143, 0.12);
+            
+            --text-heading: #f9f6f0;
+            --text-body: #c2b7ad;
+            --text-muted: #8a7f75;
+
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Inter', sans-serif;
+            
+            --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-fast: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-base);
+            color: var(--text-body);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
+        }
+
+        /* ---------- CUSTOM SCROLLBAR ---------- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-base);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(211, 180, 143, 0.3);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(211, 180, 143, 0.6);
+        }
+
+        /* ---------- HERO / VIDEO SECTION ---------- */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--bg-base);
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            filter: brightness(0.4) saturate(1.2) contrast(1.1);
+        }
+
+        /* Vignette overlay for premium cinematic feel */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 20%, var(--bg-base) 100%);
+            z-index: 2;
+        }
+
+        .hero-overlay {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 1000px;
+            width: 100%;
+            animation: fadeUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero-badge-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.65rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold-primary);
+            border: 1px solid var(--border-light);
+            padding: 0.6rem 2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            background: rgba(5, 4, 4, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero-overlay h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(3.5rem, 10vw, 7.5rem);
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            color: var(--text-heading);
+            margin-bottom: 1rem;
+            text-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-overlay .sub-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--gold-primary);
+            letter-spacing: 0.5px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-overlay .tagline {
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 650px;
+            margin: 0 auto 3rem;
+            color: var(--text-body);
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Buttons */
+        .hero-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 1.1rem 3rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: var(--transition-fast);
+        }
+
+        .btn-primary {
+            background: var(--gold-primary);
+            color: var(--bg-base);
+            border: 1px solid var(--gold-primary);
+            box-shadow: 0 10px 30px var(--gold-glow);
+        }
+
+        .btn-primary:hover {
+            background: #e6c8a3;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(211, 180, 143, 0.25);
+        }
+
+        .btn-secondary {
+            background: rgba(5, 4, 4, 0.5);
+            color: var(--text-heading);
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+            transform: translateY(-4px);
+        }
+
+        /* Scroll Indicator */
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            color: var(--text-muted);
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.8;
+            transition: var(--transition-smooth);
+        }
+
+        .hero-scroll-indicator:hover {
+            opacity: 1;
+            color: var(--gold-primary);
+        }
+
+        .hero-scroll-indicator i {
+            font-size: 1rem;
+            animation: floatDown 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        /* ---------- MAIN SECTIONS ---------- */
+        .section {
+            padding: 8rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Background ambient glow */
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 60%);
+            z-index: -1;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold-primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 500;
+            color: var(--text-heading);
+            line-height: 1.1;
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title span {
+            color: var(--gold-primary);
+            font-style: italic;
+        }
+
+        /* ---------- PREMIUM GLASS CARDS ---------- */
+        .premium-card {
+            background: var(--bg-surface);
+            border-radius: 24px;
+            padding: 4rem;
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .premium-card:hover {
+            border-color: rgba(211, 180, 143, 0.3);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        /* ---------- AUTHOR SECTION ---------- */
+        .author-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .author-image-wrapper {
+            flex: 0 0 280px;
+            position: relative;
+        }
+
+        .author-image-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            object-fit: cover;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            transition: var(--transition-smooth);
+            filter: grayscale(20%) contrast(1.1);
+        }
+
+        .author-image-wrapper:hover img {
+            transform: scale(1.03) translateY(-5px);
+            filter: grayscale(0%) contrast(1.1);
+            border-color: var(--gold-muted);
+        }
+
+        /* Abstract decorative element behind author */
+        .author-image-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: -15px;
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            z-index: -1;
+            transition: var(--transition-smooth);
+        }
+        .author-image-wrapper:hover::after {
+            transform: rotate(3deg);
+            border-color: var(--gold-primary);
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-info .name {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            font-weight: 500;
+            color: var(--text-heading);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .author-info .title-role {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--gold-primary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .author-info .bio-text {
+            font-weight: 300;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-body);
+            max-width: 600px;
+        }
+
+        .author-info .signature-line {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--text-heading);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        /* ---------- BOOK SPOTLIGHT ---------- */
+        .book-spotlight {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .book-cover-art {
+            flex: 0 0 220px;
+            text-align: center;
+        }
+
+        .icon-box {
+            background: linear-gradient(145deg, #151210, #0a0807);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            border: 1px solid var(--border-light);
+            box-shadow: 20px 20px 40px rgba(0,0,0,0.8), -5px -5px 20px rgba(255,255,255,0.02);
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+        
+        .book-cover-art:hover .icon-box {
+            transform: translateY(-10px) rotateY(-5deg);
+            border-color: var(--gold-muted);
+            box-shadow: 25px 25px 50px rgba(0,0,0,0.9);
+        }
+
+        .icon-box i {
+            font-size: 4rem;
+            background: linear-gradient(to bottom right, var(--gold-primary), #8f7253);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .edition {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            margin-top: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .book-details {
+            flex: 1;
+        }
+
+        .book-details .book-title {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            font-weight: 500;
+            color: var(--text-heading);
+            line-height: 1.1;
+        }
+
+        .book-details .book-sub {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--gold-primary);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-family: var(--font-serif);
+        }
+
+        .book-details .book-desc-text {
+            font-weight: 300;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 650px;
+            margin-bottom: 2rem;
+        }
+
+        .book-questions {
+            background: rgba(211, 180, 143, 0.03);
+            border-left: 2px solid var(--gold-primary);
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-heading);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .book-questions div {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .book-questions i {
+            font-size: 0.9rem;
+            color: var(--gold-primary);
+            margin-top: 6px;
+        }
+
+        /* ---------- PLATFORMS GRID ---------- */
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .platform-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-light);
+            padding: 1.5rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-heading);
+            transition: var(--transition-fast);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            backdrop-filter: blur(5px);
+        }
+
+        .platform-item i {
+            font-size: 1.5rem;
+            color: var(--gold-primary);
+            transition: var(--transition-fast);
+        }
+
+        .platform-item:hover {
+            background: var(--gold-glow);
+            border-color: var(--gold-muted);
+            transform: translateY(-5px);
+        }
+        
+        .platform-item:hover i {
+            transform: scale(1.1);
+        }
+
+        /* ---------- COMING SOON BANNER ---------- */
+        .coming-banner {
+            text-align: center;
+            padding: 6rem 3rem;
+            background: linear-gradient(135deg, rgba(22,19,17,0.8), rgba(10,8,7,0.9));
+        }
+
+        .coming-banner h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            color: var(--text-heading);
+            margin-bottom: 1rem;
+        }
+
+        .coming-banner p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--text-body);
+        }
+
+        .arabic-call {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--gold-primary);
+            margin-top: 2rem;
+            opacity: 0.9;
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer {
+            border-top: 1px solid var(--border-light);
+            padding: 4rem 2rem;
+            text-align: center;
+            background: #030202;
+            color: var(--text-muted);
+        }
+
+        .footer .brand-name {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--gold-primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        /* ---------- KEYFRAMES ---------- */
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes floatDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 900px) {
+            .premium-card {
+                padding: 3rem 2rem;
+            }
+            .author-section, .book-spotlight {
+                flex-direction: column;
+                text-align: center;
+                gap: 2.5rem;
+            }
+            .author-image-wrapper {
+                flex: 0 0 200px;
+                max-width: 200px;
+                margin: 0 auto;
+            }
+            .author-info .title-role {
+                justify-content: center;
+            }
+            .book-questions {
+                border-left: none;
+                border-top: 2px solid var(--gold-primary);
+                border-radius: 0 0 12px 12px;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .section {
+                padding: 5rem 1.5rem;
+            }
+            .hero-cta-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn {
+                width: 100%;
+            }
+            .platforms-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .coming-banner {
+                padding: 4rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <!-- Overlay Noise/Texture -->
+        <div style="position:absolute; inset:0; z-index:2; background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.03%22/%3E%3C/svg%3E'); pointer-events:none;"></div>
+
+        <!-- Video Background -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="beingyourselfbySaalimZayed.mp4" type="video/mp4" />
+        </video>
+
+        <div class="hero-overlay">
+            <div class="hero-badge-top">
+                <i class="fas fa-feather-alt"></i> Hukm Qalbi
+            </div>
+            <h1>Being Yourself</h1>
+            <div class="sub-title">The Courage to Stop Performing and Start Living</div>
+            <p class="tagline">
+                An exploration of authenticity, identity, fear, self-acceptance, values, relationships, 
+                and the courage to live without constantly performing for others.
+            </p>
+            <div class="hero-cta-group">
+                <a href="#preorder" class="btn btn-primary"><i class="fas fa-book-open"></i> Pre-order Edition</a>
+                <a href="#book" class="btn btn-secondary"><i class="fas fa-play"></i> Watch Trailer</a>
+            </div>
+        </div>
+
+        <div class="hero-scroll-indicator">
+            <span>Discover</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <div class="section" id="book">
+        
+        <!-- -------- AUTHOR -------- -->
+        <div class="premium-card author-section">
+            <div class="author-image-wrapper">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='500' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23110e0c'/%3E%3Ccircle cx='200' cy='200' r='90' fill='%23d3b48f' opacity='0.1'/%3E%3Cpath d='M120 400 Q200 300 280 400' stroke='%23d3b48f' stroke-width='2' fill='none'/%3E%3Ctext x='200' y='250' font-family='serif' font-size='14' fill='%238a7f75' text-anchor='middle' letter-spacing='2'%3EPORTRAIT%3C/text%3E%3C/svg%3E" alt="Saalim Zayed" />
+            </div>
+            <div class="author-info">
+                <div class="title-role"><i class="fas fa-pen-fancy"></i> Author & Founder</div>
+                <div class="name">Saalim Zayed</div>
+                <p class="bio-text">
+                    Saalim Zayed is a writer and founder whose work explores identity, purpose, long-term thinking, and meaningful living. Through his writing, he focuses on questions often overlooked in a fast-moving world: <em>Who are we becoming? What do we actually value? What kind of life are we building?</em>
+                </p>
+                <div class="signature-line">
+                    Live with intention. Think deeply. Become yourself.
+                </div>
+            </div>
+        </div>
+
+        <!-- -------- BOOK SPOTLIGHT -------- -->
+        <div class="premium-card book-spotlight">
+            <div class="book-cover-art">
+                <div class="icon-box">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="edition">First Edition · 2026</div>
+            </div>
+            <div class="book-details">
+                <div class="section-label"><i class="fas fa-star"></i> Featured Release</div>
+                <h2 class="book-title">Being Yourself</h2>
+                <div class="book-sub">The Courage to Stop Performing and Start Living</div>
+                <p class="book-desc-text">
+                    An exploration of authenticity, self-knowledge, fear of judgment, and the discipline of becoming yourself. Grounded in Qur’anic, Hadith, and Islamic scholarly reflections, this book is a guide to stripping away societal expectations and finding comfort in your true identity.
+                </p>
+                
+                <div class="book-questions">
+                    <div><i class="fas fa-diamond"></i> <span>Who are you when nobody is watching?</span></div>
+                    <div><i class="fas fa-diamond"></i> <span>How much of your life is shaped by what you actually value?</span></div>
+                    <div><i class="fas fa-diamond"></i> <span>What would change if you stopped living for approval?</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- -------- PLATFORMS -------- -->
+        <div style="margin-top: 6rem;">
+            <div class="section-label"><i class="fas fa-bookmark"></i> Availability</div>
+            <h2 class="section-title">Discover on your <span>Platforms</span></h2>
+            
+            <div class="platforms-grid">
+                <a href="#" class="platform-item" style="text-decoration:none;">
+                    <i class="fab fa-amazon"></i>
+                    Amazon Books
+                </a>
+                <a href="#" class="platform-item" style="text-decoration:none;">
+                    <i class="fas fa-book-open"></i>
+                    Rokomari
+                </a>
+                <a href="#" class="platform-item" style="text-decoration:none;">
+                    <i class="fas fa-tablet-alt"></i>
+                    Kindle Edition
+                </a>
+                <a href="#" class="platform-item" style="text-decoration:none;">
+                    <i class="fab fa-youtube"></i>
+                    YouTube Audio
+                </a>
+                <a href="#" class="platform-item" style="text-decoration:none;">
+                    <i class="fab fa-spotify"></i>
+                    Spotify Podcast
+                </a>
+            </div>
+        </div>
+
+        <!-- -------- COMING SOON BANNER -------- -->
+        <div class="premium-card coming-banner" style="margin-top: 6rem;">
+            <h2>More Is Being Written</h2>
+            <p>
+                <em>Being Yourself</em> is only the beginning. Hukm Qalbi is preparing more books, ideas, and projects for readers who want to think beyond the obvious and live with greater intention.
+            </p>
+            <div class="arabic-call">حكم قلبي</div>
+            <div style="font-family:var(--font-serif); font-size:1.2rem; color:var(--text-muted); margin-top:1rem; font-style:italic;">
+                Coming soon. In shā’ Allāh.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="brand-name">Hukm Qalbi <span>·</span> حكم قلبي</div>
+        
+        <div class="footer-links">
+            <a href="#">The Book</a>
+            <a href="#">About Author</a>
+            <a href="#">Contact</a>
+            <a href="#">Press</a>
+        </div>
+
+        <div style="font-size:0.75rem; letter-spacing:1px;">
+            &copy; 2026 Hukm Qalbi. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
