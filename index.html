@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Being Yourself — Saalim Zayed</title>
+<meta name="description" content="Being Yourself: The Courage to Stop Performing and Start Living. A book by Saalim Zayed on identity, authenticity, and the practice of taking off the mask.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,340;0,9..144,440;0,9..144,560;1,9..144,340;1,9..144,440&family=Inter:wght@400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root{
+  /* --- monochrome atmosphere, sampled from the book photograph --- */
+  --ivory:      #F2F4F4;
+  --grey-100:   #E3E5E6;
+  --grey-200:   #C7CACB;
+  --grey-300:   #9CA1A4;
+  --graphite:   #5A6165;
+  --charcoal:   #2B3236;
+  --charcoal-2: #1B2124;
+  --near-black: #0C1113;
+  --void:       #080B0C;
+
+  --ink:        #14181A;
+  --ink-soft:   rgba(20,24,26,0.62);
+  --paper-line: rgba(20,24,26,0.12);
+  --mist-line:  rgba(255,255,255,0.14);
+  --mist-line-soft: rgba(255,255,255,0.08);
+
+  /* single reserved accent — spent only in Section 05 */
+  --brass:      #B49A6C;
+  --brass-soft: rgba(180,154,108,0.4);
+
+  /* type */
+  --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --arabic: "Amiri", serif;
+
+  /* rhythm */
+  --gutter: clamp(24px, 6vw, 96px);
+  --section-pad: clamp(96px, 14vw, 220px);
+  --ease-soft: cubic-bezier(.16,.8,.24,1);
+  --ease-out: cubic-bezier(.22,1,.36,1);
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{
+  scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%;
+}
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+}
+
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--near-black); /* fallback for overscroll; each section paints its own bg */
+  overflow-x:hidden;
+  cursor:default;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ------------------------------------------------------------
+   Per-section atmosphere. Each section owns a flat/blended
+   background so contrast is guaranteed regardless of content
+   height — the page still reads as one continuous gradient
+   because each transition blends from the tone before it.
+   ------------------------------------------------------------ */
+.hero{ background:linear-gradient(180deg, var(--ivory) 0%, var(--grey-100) 100%); }
+.idea{ background:linear-gradient(180deg, var(--grey-100) 0%, var(--grey-200) 100%); }
+.masks{ background:linear-gradient(180deg, var(--grey-200) 0%, var(--charcoal) 90px, var(--charcoal-2) 100%); }
+.under{ background:linear-gradient(180deg, var(--charcoal-2) 0%, var(--ivory) 90px, var(--grey-100) 100%); }
+.spirit{ background:linear-gradient(180deg, var(--grey-100) 0%, var(--near-black) 90px, var(--void) 100%); }
+.journey{ background:linear-gradient(180deg, var(--void) 0%, var(--near-black) 100%); }
+.practices{ background:linear-gradient(180deg, var(--near-black) 0%, var(--ivory) 90px, var(--grey-100) 100%); }
+.values{ background:linear-gradient(180deg, var(--grey-100) 0%, var(--ivory) 100%); }
+.statement{ background:linear-gradient(180deg, var(--ivory) 0%, var(--near-black) 90px, var(--void) 100%); }
+.author{ background:linear-gradient(180deg, var(--void) 0%, var(--ivory) 90px, var(--grey-100) 100%); }
+.the-book{ background:linear-gradient(180deg, var(--grey-100) 0%, var(--near-black) 90px, var(--void) 100%); }
+.site-footer{ background:var(--void); }
+
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; background:none; border:none; cursor:pointer; color:inherit; }
+ul{ list-style:none; }
+
+::selection{ background:var(--ink); color:var(--ivory); }
+
+/* progressive-enhancement scroll reveal — content is visible by
+   default; only hidden-then-revealed once JS + GSAP are confirmed
+   running, and never when the visitor prefers reduced motion. */
+.js [data-reveal], .js [data-reveal-group] > *{
+  opacity:0;
+  transform:translateY(28px);
+}
+@media (prefers-reduced-motion: reduce){
+  .js [data-reveal], .js [data-reveal-group] > *{
+    opacity:1; transform:none;
+  }
+}
+
+.dark{ color:var(--ivory); }
+
+.wrap{
+  max-width:1360px;
+  margin:0 auto;
+  padding-left:var(--gutter);
+  padding-right:var(--gutter);
+}
+
+.eyebrow{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:inherit;
+  opacity:0.56;
+}
+
+.section-head{
+  max-width:820px;
+}
+
+.serif{ font-family:var(--serif); font-weight:440; }
+
+/* fluid display type scale */
+.display-1{
+  font-family:var(--serif);
+  font-weight:340;
+  font-style:italic;
+  font-size:clamp(52px, 10vw, 148px);
+  line-height:0.98;
+  letter-spacing:-0.01em;
+}
+.display-2{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(34px, 5.2vw, 68px);
+  line-height:1.08;
+  letter-spacing:-0.01em;
+}
+.display-3{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(26px, 3.2vw, 42px);
+  line-height:1.18;
+}
+p.lede{
+  font-size:clamp(16px, 1.4vw, 19px);
+  line-height:1.65;
+  color:var(--ink-soft);
+  max-width:52ch;
+}
+.dark p.lede{ color:rgba(242,244,244,0.62); }
+
+/* buttons */
+.btn{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:0.02em;
+  padding:16px 30px;
+  border-radius:100px;
+  transition:transform .5s var(--ease-out), background .4s, color .4s, border-color .4s;
+  white-space:nowrap;
+}
+.btn-primary{
+  background:var(--ink);
+  color:var(--ivory);
+}
+.dark .btn-primary{
+  background:var(--ivory);
+  color:var(--near-black);
+}
+.btn-ghost{
+  border:1px solid var(--paper-line);
+  color:var(--ink);
+}
+.dark .btn-ghost{
+  border:1px solid var(--mist-line);
+  color:var(--ivory);
+}
+.btn svg{ width:14px; height:14px; transition:transform .5s var(--ease-out); }
+.btn:hover svg{ transform:translateX(4px); }
+
+/* magnetic wrapper target */
+.magnetic{ display:inline-block; }
+
+/* grain overlay */
+.grain{
+  position:fixed; inset:0; z-index:2;
+  pointer-events:none;
+  opacity:0.05;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ambient cursor light — the page's signature system */
+.ambient-light{
+  position:fixed; inset:0; z-index:1;
+  pointer-events:none;
+  background:radial-gradient(600px 600px at var(--mx,50%) var(--my,30%),
+    rgba(255,255,255,0.16), rgba(255,255,255,0) 70%);
+  mix-blend-mode:soft-light;
+  transition:background .25s linear;
+}
+@media (prefers-reduced-motion: reduce){
+  .ambient-light{ display:none; }
+}
+
+/* focus states */
+a:focus-visible, button:focus-visible{
+  outline:2px solid var(--brass);
+  outline-offset:4px;
+  border-radius:4px;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  padding:22px var(--gutter);
+  display:flex; align-items:center; justify-content:space-between;
+  transition:padding .5s var(--ease-out), background .5s, backdrop-filter .5s, border-color .5s;
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  padding-top:14px; padding-bottom:14px;
+  background:rgba(12,17,19,0.42);
+  backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  border-bottom:1px solid var(--mist-line-soft);
+}
+.nav-mark{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:440;
+  font-size:19px;
+  color:var(--ink);
+  transition:color .5s;
+}
+.nav.scrolled .nav-mark, .nav.on-dark .nav-mark{ color:var(--ivory); }
+
+.nav-links{
+  display:flex; gap:clamp(16px,3vw,40px);
+}
+.nav-links a{
+  font-size:12.5px;
+  font-weight:500;
+  letter-spacing:0.03em;
+  color:var(--ink);
+  opacity:0.72;
+  transition:opacity .3s, color .5s;
+  position:relative;
+}
+.nav.scrolled .nav-links a, .nav.on-dark .nav-links a{ color:var(--ivory); }
+.nav-links a:hover{ opacity:1; }
+.nav-links a::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:-6px;
+  height:1px; background:currentColor;
+  transform:scaleX(0); transform-origin:right;
+  transition:transform .45s var(--ease-out);
+}
+.nav-links a:hover::after{ transform:scaleX(1); transform-origin:left; }
+
+.nav-toggle{ display:none; }
+@media (max-width:760px){
+  .nav-links{
+    position:fixed; inset:0 0 auto 0;
+    top:0; padding:100px 32px 40px;
+    background:var(--near-black);
+    flex-direction:column; gap:22px;
+    transform:translateY(-100%);
+    transition:transform .5s var(--ease-out);
+    display:flex;
+  }
+  .nav-links.open{ transform:translateY(0); }
+  .nav-links a{ color:var(--ivory); opacity:0.85; font-size:16px; }
+  .nav-toggle{ display:block; color:var(--ink); position:relative; z-index:60; }
+  .nav.scrolled .nav-toggle, .nav.on-dark .nav-toggle{ color:var(--ivory); }
+  .nav-toggle.open{ color:var(--ivory); }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:160px var(--gutter) 80px;
+  overflow:hidden;
+}
+.hero-grid{
+  width:100%;
+  max-width:1360px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  gap:clamp(24px,4vw,60px);
+  align-items:center;
+}
+.hero-copy{ position:relative; z-index:3; }
+.hero-copy .eyebrow{ display:block; margin-bottom:22px; }
+.hero-copy .display-1{ color:var(--ink); }
+.hero-copy .display-1 em{ font-style:italic; }
+.hero-supporting{
+  font-family:var(--serif);
+  font-size:clamp(17px,1.8vw,22px);
+  font-weight:400;
+  font-style:italic;
+  letter-spacing:0.005em;
+  color:var(--ink);
+  margin-top:22px;
+  max-width:36ch;
+}
+.hero-copy p.lede{ margin-top:20px; }
+.hero-byline{
+  margin-top:28px;
+  font-size:13px;
+  letter-spacing:0.04em;
+  color:var(--ink-soft);
+}
+.hero-byline b{ font-weight:600; color:var(--ink); }
+.hero-ctas{
+  display:flex; gap:14px; margin-top:44px; flex-wrap:wrap;
+}
+
+.hero-stage{
+  position:relative;
+  perspective:1600px;
+  display:flex; align-items:center; justify-content:center;
+}
+.hero-book{
+  position:relative;
+  width:100%;
+  max-width:560px;
+  transform-style:preserve-3d;
+  will-change:transform;
+  transition:transform .2s var(--ease-out);
+}
+.hero-book img{
+  width:100%;
+  border-radius:2px;
+  filter:drop-shadow(0 40px 60px rgba(0,0,0,0.28));
+}
+.hero-book-sheen{
+  position:absolute; inset:0;
+  background:linear-gradient(120deg, rgba(255,255,255,0.35), rgba(255,255,255,0) 40%);
+  opacity:0;
+  transition:opacity .3s;
+  mix-blend-mode:overlay;
+  pointer-events:none;
+}
+
+.hero-scroll-cue{
+  position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  z-index:3;
+  opacity:0.55;
+}
+.hero-scroll-cue span{
+  font-size:10px; letter-spacing:0.2em; text-transform:uppercase;
+}
+.scroll-line{
+  width:1px; height:40px; background:var(--ink);
+  position:relative; overflow:hidden;
+}
+.scroll-line::after{
+  content:""; position:absolute; left:0; top:-100%; width:100%; height:100%;
+  background:var(--ink);
+  animation:scrollDown 2.2s ease-in-out infinite;
+}
+@keyframes scrollDown{
+  0%{ top:-100%; } 60%{ top:100%; } 100%{ top:100%; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-line::after{ animation:none; top:0; }
+}
+
+@media (max-width:900px){
+  .hero-grid{ grid-template-columns:1fr; text-align:left; }
+  .hero-stage{ order:-1; margin-bottom:20px; }
+  .hero-book{ max-width:340px; margin:0 auto; }
+}
+
+/* ============================================================
+   SECTION 02 — THE IDEA
+   ============================================================ */
+.idea{
+  position:relative;
+  padding:var(--section-pad) var(--gutter);
+}
+.idea-grid{
+  max-width:1360px; margin:0 auto;
+  display:grid;
+  grid-template-columns:0.85fr 1.15fr;
+  gap:clamp(40px,6vw,100px);
+  align-items:center;
+}
+.idea .section-head .display-2{ margin-top:18px; }
+.idea .lede{ margin-top:26px; }
+
+.mask-stage{
+  position:relative;
+  aspect-ratio:4/5;
+  max-width:440px;
+}
+.mask-panel{
+  position:absolute; inset:0;
+  border-radius:6px;
+  display:flex; align-items:flex-end;
+  padding:32px;
+}
+.mask-panel .tag{
+  font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
+  font-weight:600;
+}
+.mask-panel-front{
+  background:linear-gradient(155deg, rgba(255,255,255,0.9), rgba(230,232,233,0.65));
+  border:1px solid rgba(255,255,255,0.6);
+  backdrop-filter:blur(6px);
+  box-shadow:0 30px 60px -20px rgba(20,24,26,0.35);
+  color:var(--ink);
+}
+.mask-panel-back{
+  background:linear-gradient(155deg, var(--graphite), var(--charcoal-2));
+  color:var(--ivory);
+  transform:translate(26px, 26px);
+}
+@media (max-width:900px){
+  .idea-grid{ grid-template-columns:1fr; }
+  .mask-stage{ margin:0 auto; max-width:320px; }
+}
+
+/* ============================================================
+   SECTION 03 — THE MASKS WE WEAR
+   ============================================================ */
+.masks{
+  padding:var(--section-pad) var(--gutter);
+  background:transparent;
+}
+.masks .section-head{ margin:0 auto 64px; text-align:center; max-width:640px; }
+.masks .section-head .display-2{ margin-top:16px; }
+.masks .section-head p.lede{ margin:16px auto 0; }
+
+.mask-cards{
+  max-width:1360px; margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:16px;
+}
+.mask-card{
+  position:relative;
+  border-radius:10px;
+  padding:28px 22px;
+  min-height:340px;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  background:linear-gradient(165deg, var(--charcoal), var(--charcoal-2));
+  border:1px solid var(--mist-line-soft);
+  color:var(--ivory);
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .6s var(--ease-out), box-shadow .6s var(--ease-out);
+}
+.mask-card:hover, .mask-card.active{
+  transform:translateY(-10px);
+  box-shadow:0 40px 70px -30px rgba(0,0,0,0.55);
+}
+.mask-card-index{
+  position:absolute; top:22px; left:22px;
+  font-family:var(--serif); font-style:italic; font-size:15px;
+  opacity:0.5;
+}
+.mask-card-icon{
+  width:34px; height:34px; margin-bottom:auto; margin-top:26px;
+  opacity:0.85;
+}
+.mask-card-icon svg{ width:100%; height:100%; }
+.mask-card h3{
+  font-family:var(--serif); font-weight:440; font-size:21px;
+  margin-top:20px;
+}
+.mask-card p{
+  font-size:13.5px; line-height:1.55;
+  color:rgba(242,244,244,0.6);
+  max-height:0; opacity:0;
+  overflow:hidden;
+  transition:max-height .6s var(--ease-out), opacity .5s, margin-top .6s var(--ease-out);
+}
+.mask-card:hover p, .mask-card.active p{
+  max-height:140px; opacity:1; margin-top:10px;
+}
+.mask-card::before{
+  content:"";
+  position:absolute; inset:0;
+  background:radial-gradient(circle at var(--px,50%) var(--py,20%), rgba(255,255,255,0.09), transparent 60%);
+  opacity:0; transition:opacity .4s;
+  pointer-events:none;
+}
+.mask-card:hover::before{ opacity:1; }
+
+@media (max-width:1100px){
+  .mask-cards{ grid-template-columns:repeat(3,1fr); }
+}
+@media (max-width:700px){
+  .mask-cards{ grid-template-columns:1fr; gap:14px; }
+  .mask-card{ min-height:auto; padding:26px; }
+  .mask-card p{ max-height:none; opacity:1; margin-top:10px; position:relative; }
+}
+
+/* ============================================================
+   SECTION 04 — UNDER THE MASK
+   ============================================================ */
+.under{
+  padding:var(--section-pad) var(--gutter);
+  text-align:center;
+}
+.under .eyebrow{ display:block; }
+.under h2{
+  margin:24px auto 0;
+  max-width:16ch;
+  color:var(--ink);
+}
+.under p.lede{
+  margin:30px auto 0;
+  max-width:56ch;
+  text-align:center;
+}
+.under-words{
+  margin-top:70px;
+  display:flex; flex-wrap:wrap; justify-content:center; gap:14px 10px;
+}
+.under-words span{
+  font-family:var(--serif); font-style:italic; font-weight:400;
+  font-size:clamp(17px,2.4vw,28px);
+  color:var(--graphite);
+  padding:10px 6px;
+  position:relative;
+  transition:color .5s;
+}
+.under-words span::after{
+  content:"·";
+  margin-left:12px;
+  color:var(--grey-300);
+  font-style:normal;
+}
+.under-words span:last-child::after{ content:""; }
+.under-words span:hover{ color:var(--ink); }
+
+/* ============================================================
+   SECTION 05 — THE ISLAMIC PERSPECTIVE
+   ============================================================ */
+.spirit{
+  position:relative;
+  padding:var(--section-pad) var(--gutter);
+  overflow:hidden;
+}
+.spirit-ambient{
+  position:absolute; inset:0;
+  display:flex; flex-wrap:wrap; align-content:center; justify-content:center;
+  gap:clamp(20px,5vw,60px);
+  opacity:0.08;
+  pointer-events:none;
+  font-family:var(--arabic);
+  font-size:clamp(30px,6vw,90px);
+  color:var(--ivory);
+}
+.spirit-inner{
+  position:relative; z-index:2;
+  max-width:760px; margin:0 auto; text-align:center;
+}
+.spirit .eyebrow{ color:var(--brass); opacity:1; }
+.spirit h2{ margin-top:20px; }
+.spirit p.lede{ margin:24px auto 0; text-align:center; }
+
+.quote-panel{
+  margin:70px auto 0;
+  max-width:640px;
+  padding:clamp(36px,6vw,60px);
+  border:1px solid var(--mist-line);
+  border-radius:4px;
+  position:relative;
+}
+.quote-panel::before{
+  content:"";
+  position:absolute; top:-1px; left:50%; transform:translateX(-50%);
+  width:44px; height:1px; background:var(--brass);
+}
+.quote-panel p{
+  font-family:var(--serif); font-style:italic; font-weight:340;
+  font-size:clamp(21px,3vw,32px);
+  line-height:1.4;
+}
+.quote-panel span{
+  display:block; margin-top:22px;
+  font-family:var(--sans); font-style:normal;
+  font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--brass);
+}
+
+.terms-grid{
+  margin:80px auto 0;
+  max-width:960px;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1px;
+  background:var(--mist-line-soft);
+  border:1px solid var(--mist-line-soft);
+}
+.term{
+  background:var(--near-black);
+  padding:26px 18px;
+  text-align:left;
+}
+.term .ar{
+  font-family:var(--arabic);
+  font-size:22px;
+  color:var(--brass);
+}
+.term .translit{
+  font-size:13px; font-weight:600; letter-spacing:0.02em;
+  margin-top:10px;
+  color:var(--ivory);
+}
+.term .gloss{
+  font-size:12.5px; margin-top:6px;
+  color:rgba(242,244,244,0.5);
+  line-height:1.5;
+}
+@media (max-width:700px){
+  .terms-grid{ grid-template-columns:repeat(2,1fr); }
+}
+
+/* ============================================================
+   SECTION 06 — THE JOURNEY THROUGH THE BOOK
+   ============================================================ */
+.journey{
+  padding:var(--section-pad) var(--gutter);
+}
+.journey .section-head{ margin:0 auto 80px; text-align:center; max-width:640px; }
+.journey .section-head p.lede{ margin:16px auto 0; text-align:center; }
+
+.timeline{
+  max-width:920px; margin:0 auto;
+  position:relative;
+}
+.timeline-rail{
+  position:absolute; left:64px; top:0; bottom:0; width:1px;
+  background:var(--mist-line-soft);
+}
+.timeline-rail-fill{
+  position:absolute; left:0; top:0; width:100%; height:0%;
+  background:var(--brass);
+  transform-origin:top;
+}
+.chapter{
+  position:relative;
+  display:grid;
+  grid-template-columns:64px 1fr;
+  gap:36px;
+  padding:26px 0;
+  cursor:pointer;
+  border-bottom:1px solid var(--mist-line-soft);
+}
+.chapter:last-child{ border-bottom:none; }
+.chapter-num{
+  font-family:var(--serif); font-style:italic; font-weight:340;
+  font-size:20px;
+  color:var(--grey-300);
+  transition:font-size .5s var(--ease-out), color .5s;
+  align-self:start;
+  position:relative; z-index:2;
+}
+.chapter-dot{
+  position:absolute; left:60px; top:34px; width:9px; height:9px; border-radius:50%;
+  background:var(--near-black); border:1px solid var(--brass);
+  z-index:2;
+}
+.chapter-body h3{
+  font-family:var(--serif); font-weight:440;
+  font-size:clamp(19px,2.4vw,26px);
+  color:var(--ivory);
+  transition:transform .5s var(--ease-out);
+}
+.chapter-body p{
+  font-size:14px; line-height:1.6;
+  color:rgba(242,244,244,0.5);
+  max-height:0; opacity:0; margin-top:0;
+  overflow:hidden;
+  transition:max-height .55s var(--ease-out), opacity .45s, margin-top .55s var(--ease-out);
+}
+.chapter.active .chapter-num{ font-size:30px; color:var(--brass); }
+.chapter.active .chapter-body p{ max-height:120px; opacity:1; margin-top:10px; }
+.chapter.conclusion .chapter-num{ font-style:normal; font-size:14px; letter-spacing:0.1em; text-transform:uppercase; }
+
+@media (max-width:600px){
+  .timeline-rail{ left:38px; }
+  .chapter{ grid-template-columns:38px 1fr; gap:20px; }
+  .chapter-dot{ left:34px; }
+  .chapter.active .chapter-body p{ max-height:180px; }
+}
+
+/* ============================================================
+   SECTION 07 — FROM INSIGHT TO PRACTICE
+   ============================================================ */
+.practices{
+  padding:var(--section-pad) var(--gutter);
+}
+.practices-top{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:24px;
+  max-width:1360px; margin:0 auto 48px;
+  flex-wrap:wrap;
+}
+.practices-top .section-head{ margin:0; }
+.carousel-nav{ display:flex; gap:10px; }
+.carousel-nav button{
+  width:44px; height:44px; border-radius:50%;
+  border:1px solid var(--paper-line);
+  display:flex; align-items:center; justify-content:center;
+  transition:background .3s, border-color .3s, transform .3s;
+}
+.carousel-nav button:hover{ background:var(--ink); color:var(--ivory); border-color:var(--ink); }
+.carousel-nav svg{ width:15px; height:15px; }
+
+.practice-track{
+  max-width:1360px; margin:0 auto;
+  display:flex; gap:20px;
+  overflow-x:auto;
+  scroll-snap-type:x proximity;
+  padding-bottom:20px;
+  scrollbar-width:none;
+}
+.practice-track::-webkit-scrollbar{ display:none; }
+.practice-card{
+  scroll-snap-align:start;
+  flex:0 0 clamp(240px, 28vw, 300px);
+  background:rgba(20,24,26,0.03);
+  border:1px solid var(--paper-line);
+  border-radius:10px;
+  padding:28px 24px;
+  transition:transform .5s var(--ease-out), border-color .5s;
+}
+.practice-card:hover{ transform:translateY(-8px); border-color:var(--ink); }
+.practice-card .pnum{
+  font-family:var(--serif); font-style:italic; font-size:14px;
+  color:var(--grey-300);
+}
+.practice-card h3{
+  font-family:var(--serif); font-weight:440; font-size:19px;
+  margin-top:16px;
+}
+.practice-card p{
+  font-size:13.5px; line-height:1.6; color:var(--ink-soft);
+  margin-top:10px;
+}
+
+/* ============================================================
+   SECTION 08 — VALUES
+   ============================================================ */
+.values{
+  padding:var(--section-pad) var(--gutter);
+}
+.values-inner{ max-width:1000px; margin:0 auto; text-align:center; }
+.values .lede{ margin:24px auto 0; text-align:center; }
+
+.value-chips{
+  margin-top:56px;
+  display:flex; flex-wrap:wrap; justify-content:center; gap:12px;
+}
+.value-chip{
+  padding:13px 24px;
+  border-radius:100px;
+  border:1px solid var(--paper-line);
+  font-size:13.5px; font-weight:500;
+  transition:background .35s, color .35s, border-color .35s;
+}
+.value-chip.active, .value-chip:hover{
+  background:var(--ink); color:var(--ivory); border-color:var(--ink);
+}
+
+.value-chain{
+  margin:56px auto 0;
+  max-width:720px;
+  min-height:150px;
+  padding:clamp(28px,4vw,46px);
+  border:1px solid var(--paper-line);
+  border-radius:14px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:18px;
+}
+.chain-row{
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:center;
+}
+.chain-step{ text-align:center; }
+.chain-step .k{
+  font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase;
+  color:var(--grey-300); display:block; margin-bottom:6px;
+}
+.chain-step .v{
+  font-family:var(--serif); font-style:italic; font-size:clamp(17px,2vw,22px);
+}
+.chain-arrow{ color:var(--grey-300); font-size:16px; }
+.chain-example{
+  font-size:13.5px; color:var(--ink-soft); max-width:48ch; text-align:center;
+}
+
+@media (max-width:640px){
+  .practices-top{ flex-direction:column; align-items:flex-start; }
+}
+
+/* ============================================================
+   SECTION 09 — A LIFELONG PRACTICE
+   ============================================================ */
+.statement{
+  min-height:80vh;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
+  padding:120px var(--gutter);
+}
+.statement-inner{ max-width:900px; }
+.statement-line{
+  font-family:var(--serif); font-weight:340; font-style:italic;
+  font-size:clamp(30px, 6vw, 64px);
+  line-height:1.15;
+  color:var(--ivory);
+}
+.statement-line.two{
+  color:var(--brass);
+  margin-top:8px;
+}
+
+/* ============================================================
+   SECTION 10 — ABOUT THE AUTHOR
+   ============================================================ */
+.author{
+  padding:var(--section-pad) var(--gutter);
+}
+.author-grid{
+  max-width:1100px; margin:0 auto;
+  display:grid; grid-template-columns:0.6fr 1fr;
+  gap:clamp(30px,5vw,90px);
+  align-items:center;
+}
+.author-mark{
+  font-family:var(--serif); font-style:italic; font-weight:340;
+  font-size:clamp(40px,6vw,72px);
+  line-height:1;
+}
+.author-role{
+  margin-top:18px;
+  font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.author-role b{
+  display:block; font-size:13px; letter-spacing:0.02em; text-transform:none;
+  font-weight:600; color:var(--ink); margin-top:6px;
+}
+.author-bio p.lede{ margin:0; }
+@media (max-width:760px){
+  .author-grid{ grid-template-columns:1fr; }
+}
+
+/* ============================================================
+   SECTION 11 — THE BOOK
+   ============================================================ */
+.the-book{
+  padding:var(--section-pad) var(--gutter);
+}
+.book-grid{
+  max-width:1200px; margin:0 auto;
+  display:grid; grid-template-columns:0.9fr 1.1fr;
+  gap:clamp(30px,6vw,80px);
+  align-items:center;
+}
+.book-visual{
+  position:relative;
+  perspective:1400px;
+}
+.book-visual img{
+  width:100%; max-width:420px; margin:0 auto;
+  mask-image:radial-gradient(ellipse 78% 82% at 50% 48%, black 62%, transparent 96%);
+  -webkit-mask-image:radial-gradient(ellipse 78% 82% at 50% 48%, black 62%, transparent 96%);
+  will-change:transform;
+  transition:transform .2s var(--ease-out);
+}
+.book-copy h2{ color:var(--ivory); margin-top:18px; }
+.book-copy .book-sub{
+  margin-top:14px;
+  font-family:var(--serif); font-style:italic; font-size:clamp(16px,1.8vw,20px);
+  color:rgba(242,244,244,0.72);
+}
+.book-copy .book-author{
+  margin-top:10px; font-size:13px; letter-spacing:0.04em;
+  color:rgba(242,244,244,0.5);
+}
+.book-ctas{
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:38px;
+}
+@media (max-width:840px){
+  .book-grid{ grid-template-columns:1fr; text-align:center; }
+  .book-copy{ order:2; }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{
+  padding:80px var(--gutter) 34px;
+  color:var(--ivory);
+}
+.footer-top{
+  max-width:1360px; margin:0 auto;
+  display:grid; grid-template-columns:1.3fr 1fr 1fr;
+  gap:40px;
+  padding-bottom:56px;
+  border-bottom:1px solid var(--mist-line-soft);
+}
+.footer-mark{
+  font-family:var(--serif); font-style:italic; font-size:26px;
+}
+.footer-tagline{
+  margin-top:12px; font-size:13px; color:rgba(242,244,244,0.5); max-width:32ch;
+}
+.footer-col h4{
+  font-size:11px; letter-spacing:0.16em; text-transform:uppercase;
+  color:rgba(242,244,244,0.4); margin-bottom:16px;
+}
+.footer-col a, .footer-col p{
+  display:block; font-size:13.5px; margin-bottom:10px;
+  color:rgba(242,244,244,0.75);
+  transition:color .3s;
+}
+.footer-col a:hover{ color:var(--ivory); }
+.footer-bottom{
+  max-width:1360px; margin:0 auto;
+  display:flex; justify-content:space-between; align-items:center;
+  padding-top:26px; flex-wrap:wrap; gap:12px;
+  font-size:11.5px; color:rgba(242,244,244,0.35);
+}
+@media (max-width:760px){
+  .footer-top{ grid-template-columns:1fr; gap:32px; }
+}
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="ambient-light" id="ambientLight" aria-hidden="true"></div>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<header class="nav" id="siteNav">
+  <a href="#top" class="nav-mark">Being Yourself</a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#idea">Home</a>
+    <a href="#the-book">The Book</a>
+    <a href="#author">The Author</a>
+    <a href="#chapters">Chapters</a>
+    <a href="#excerpt">Excerpt</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="nav-toggle" aria-label="Menu">
+    <svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M0 1H20M0 7H20M0 13H20" stroke="currentColor" stroke-width="1.4"/></svg>
+  </button>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-copy" data-reveal>
+      <span class="eyebrow">A Book About Authenticity</span>
+      <h1 class="display-1">Being<br><em>Yourself</em></h1>
+      <p class="hero-supporting serif" style="font-style:italic;">The Courage to Stop Performing and Start Living</p>
+      <p class="lede">A thoughtful exploration of identity, authenticity, fear, values, and self-acceptance — and the quiet courage it takes to live without constantly performing for others.</p>
+      <p class="hero-byline">By <b>Saalim Zayed</b></p>
+      <div class="hero-ctas">
+        <span class="magnetic"><a href="#the-book" class="btn btn-primary">Explore the Book
+          <svg viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L8 2M13 7L8 12" stroke="currentColor" stroke-width="1.3"/></svg>
+        </a></span>
+        <span class="magnetic"><a href="#excerpt" class="btn btn-ghost">Read an Excerpt</a></span>
+      </div>
+    </div>
+
+    <div class="hero-stage">
+      <div class="hero-book" id="heroBook">
+        <img src="assets/book-hero.webp" alt="Being Yourself by Saalim Zayed — hardcover book, cream cover with a black circular emblem reading حكم قلبي, subtitled A Map Back to the Person Underneath the Mask" width="1375" height="768" fetchpriority="high">
+        <div class="hero-book-sheen" id="heroSheen"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 02 — THE IDEA
+     ============================================================ -->
+<section class="idea" id="idea">
+  <div class="idea-grid">
+    <div class="mask-stage" data-reveal>
+      <div class="mask-panel mask-panel-back" data-layer="back">
+        <span class="tag">The Person</span>
+      </div>
+      <div class="mask-panel mask-panel-front" data-layer="front">
+        <span class="tag">The Performance</span>
+      </div>
+    </div>
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">The Idea</span>
+      <h2 class="display-2 serif">Who Are You Without the Performance?</h2>
+      <p class="lede">Over years of trying to be liked, to be safe, to be enough, most people learn to edit themselves. A softened opinion here. A hidden preference there. Practiced enough times, the performance starts to feel like personality.</p>
+      <p class="lede" style="margin-top:16px;">Being Yourself asks a quieter question. Underneath the roles you play — the achiever, the peacemaker, the one who's always fine — who is actually there?</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 03 — THE MASKS WE WEAR
+     ============================================================ -->
+<section class="masks dark" id="masks" data-theme="dark">
+  <div class="section-head" data-reveal>
+    <span class="eyebrow">The Masks We Wear</span>
+    <h2 class="display-2 serif">Five Ways We Learn to Hide</h2>
+    <p class="lede">Each mask began as protection. Worn long enough, it can quietly become a cage. Hover to look underneath.</p>
+  </div>
+
+  <div class="mask-cards" data-reveal-group>
+    <article class="mask-card" tabindex="0" data-index="01">
+      <span class="mask-card-index">01</span>
+      <span class="mask-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 34 34" fill="none"><path d="M17 4L20.5 13.5L30 17L20.5 20.5L17 30L13.5 20.5L4 17L13.5 13.5L17 4Z" stroke="currentColor" stroke-width="1.1"/></svg>
+      </span>
+      <h3 class="serif">The Achiever</h3>
+      <p>Worth measured in output. Rest starts to feel dangerous, and stillness like falling behind.</p>
+    </article>
+    <article class="mask-card" tabindex="0" data-index="02">
+      <span class="mask-card-index">02</span>
+      <span class="mask-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="12" stroke="currentColor" stroke-width="1.1"/><path d="M11 17H23" stroke="currentColor" stroke-width="1.1"/></svg>
+      </span>
+      <h3 class="serif">The Peacekeeper</h3>
+      <p>Harmony placed above honesty. Conflict avoided at almost any cost, including the truth.</p>
+    </article>
+    <article class="mask-card" tabindex="0" data-index="03">
+      <span class="mask-card-index">03</span>
+      <span class="mask-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 34 34" fill="none"><rect x="6" y="6" width="22" height="22" rx="2" stroke="currentColor" stroke-width="1.1"/><path d="M6 24L28 10" stroke="currentColor" stroke-width="1.1"/></svg>
+      </span>
+      <h3 class="serif">The Cool / Detached</h3>
+      <p>Distance mistaken for depth. Caring kept carefully invisible, so it can never be used against you.</p>
+    </article>
+    <article class="mask-card" tabindex="0" data-index="04">
+      <span class="mask-card-index">04</span>
+      <span class="mask-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 34 34" fill="none"><path d="M5 22C5 22 9 12 17 12C25 12 29 22 29 22" stroke="currentColor" stroke-width="1.1"/><circle cx="12" cy="18" r="1.4" fill="currentColor"/><circle cx="22" cy="18" r="1.4" fill="currentColor"/></svg>
+      </span>
+      <h3 class="serif">The Entertainer</h3>
+      <p>Loved for the performance, rarely met in the pause. The silence after the laughter feels unsafe.</p>
+    </article>
+    <article class="mask-card" tabindex="0" data-index="05">
+      <span class="mask-card-index">05</span>
+      <span class="mask-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 34 34" fill="none"><path d="M17 5V29M5 17H29" stroke="currentColor" stroke-width="1.1"/><circle cx="17" cy="17" r="6" stroke="currentColor" stroke-width="1.1"/></svg>
+      </span>
+      <h3 class="serif">The Strategist</h3>
+      <p>Every room read, every move calculated. Tactically effective, and quietly costly to real intimacy.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 04 — UNDER THE MASK
+     ============================================================ -->
+<section class="under" id="under">
+  <span class="eyebrow" data-reveal>Under the Mask</span>
+  <h2 class="display-2 serif" data-reveal>The Self Was Never Gone.</h2>
+  <p class="lede" data-reveal>Authenticity, the book argues, isn't invented — it's uncovered. Beneath the roles are things that were always yours: values you didn't choose for applause, instincts you talked yourself out of, a voice quieter than the critic but far more precise.</p>
+  <div class="under-words" data-reveal>
+    <span>Values</span><span>Strengths</span><span>Passions</span><span>Inner Voice</span><span>Preferences</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 05 — THE ISLAMIC PERSPECTIVE
+     ============================================================ -->
+<section class="spirit dark" id="spirit" data-theme="dark">
+  <div class="spirit-ambient" aria-hidden="true">
+    <span>فطرة</span><span>قلب</span><span>إخلاص</span><span>نفس</span><span>توكل</span>
+  </div>
+  <div class="spirit-inner">
+    <span class="eyebrow" data-reveal>The Islamic Perspective</span>
+    <h2 class="display-2 serif" data-reveal>A Deeper Return</h2>
+    <p class="lede" data-reveal>Being Yourself situates this search within a spiritual frame — not self-invention, but a return to the <em>fitrah</em>, the original disposition placed within every person, before it was layered over by fear and performance.</p>
+
+    <div class="quote-panel" data-reveal>
+      <p>"The heart was not made to perform. It was made to be known."</p>
+      <span>— Being Yourself</span>
+    </div>
+
+    <div class="terms-grid" data-reveal-group>
+      <div class="term"><span class="ar">فطرة</span><div class="translit">Fitrah</div><div class="gloss">The innate disposition every person is born with.</div></div>
+      <div class="term"><span class="ar">قلب</span><div class="translit">Qalb</div><div class="gloss">The heart — the seat of perception and intention.</div></div>
+      <div class="term"><span class="ar">نفس</span><div class="translit">Nafs</div><div class="gloss">The self, in its many competing states.</div></div>
+      <div class="term"><span class="ar">رياء</span><div class="translit">Riya'</div><div class="gloss">Performing for the sake of being witnessed.</div></div>
+      <div class="term"><span class="ar">إخلاص</span><div class="translit">Ikhlas</div><div class="gloss">Sincerity — an intention undivided by audience.</div></div>
+      <div class="term"><span class="ar">توكل</span><div class="translit">Tawakkul</div><div class="gloss">Reliance placed beyond what you can control.</div></div>
+      <div class="term"><span class="ar">نية</span><div class="translit">Niyyah</div><div class="gloss">The intention that gives an act its weight.</div></div>
+      <div class="term"><span class="ar">إحسان</span><div class="translit">Ihsan</div><div class="gloss">Excellence practiced as though always seen.</div></div>
+      <div class="term"><span class="ar">تزكية</span><div class="translit">Tazkiyah</div><div class="gloss">The ongoing purification of the self.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 06 — THE JOURNEY THROUGH THE BOOK
+     ============================================================ -->
+<section class="journey dark" id="chapters" data-theme="dark">
+  <div class="section-head" data-reveal>
+    <span class="eyebrow">The Journey Through the Book</span>
+    <h2 class="display-2 serif">Eight Chapters, One Return</h2>
+    <p class="lede">The book moves in order — from the masks we learn, to the self underneath, to the daily discipline of choosing it again.</p>
+  </div>
+
+  <div class="timeline" data-reveal-group>
+    <div class="timeline-rail"><div class="timeline-rail-fill" id="railFill"></div></div>
+
+    <div class="chapter" data-chapter>
+      <span class="chapter-num serif">01</span>
+      <span class="chapter-dot"></span>
+      <div class="chapter-body">
+        <h3 class="serif">The Masks We Wear</h3>
+        <p>How we learned to edit ourselves for safety, approval, and belonging.</p>
+      </div>
+    </div>
+    <div class="chapter" data-chapter>
+      <span class="chapter-num serif">02</span>
+      <span class="chapter-dot"></span>
+      <div class="chapter-body">
+        <h3 class="serif">Understanding Your True Self</h3>
+        <p>Locating what's actually yours beneath the roles you've inherited.</p>
+      </div>
+    </div>
+    <div class="chapter" data-chapter>
+      <span class="chapter-num serif">03</span>
+      <span class="chapter-dot"></span>
+      <div class="chapter-body">
+        <h3 class="serif">Overcoming Fear and Judgment</h3>
+        <p>The private risk calculus running behind every honest moment.</p>
+      </div>
+    </div>
+    <div class="chapter" data-chapter>
+      <span class="chapter-num serif">04</span>
+      <span class="chapter-dot"></span>
+      <div class="chapter-body">
+        <h3 class="serif">Self-Acceptance and Self-Compassion</h3>
+        <p>Softening the inner critic enough to actually hear yourself.</p>
+      </div>
+    </div>
+    <div class="chapter" data-chapter>
+      <span class="chapter-num serif">05</span>
+      <span class="chapter-dot"></span>
+      <div class="chapter-body">
+        <h3 class="serif">Authenticity in Relationships</h3>
+        <p>What honesty costs in closeness, and what it's actually worth.</p>
+      </div>
+    </div>
+    <div class="chapter" data-chapter>
+      <span class="chapter-num serif">06</span>
+      <span class="chapter-dot"></span>
+      <div class="chapter-body">
+        <h3 class="serif">Living Your Values</h3>
+        <p>The distance between claiming a value and repeatedly living it.</p>
+      </div>
+    </div>
+    <div class="chapter" data-chapter>
+      <span class="chapter-num serif">07</span>
+      <span class="chapter-dot"></span>
+      <div class="chapter-body">
+        <h3 class="serif">The Discipline of Authenticity</h3>
+        <p>Treating honesty as a practice to build, not a trait you either have or don't.</p>
+      </div>
+    </div>
+    <div class="chapter" data-chapter>
+      <span class="chapter-num serif">08</span>
+      <span class="chapter-dot"></span>
+      <div class="chapter-body">
+        <h3 class="serif">Practical Daily Practices</h3>
+        <p>Small, repeatable acts that rebuild the habit of being real.</p>
+      </div>
+    </div>
+    <div class="chapter conclusion" data-chapter>
+      <span class="chapter-num">Conclusion</span>
+      <span class="chapter-dot"></span>
+      <div class="chapter-body">
+        <h3 class="serif">The Lifelong Journey of Becoming Yourself</h3>
+        <p>Authenticity isn't a finished state — it's a practice you return to.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 07 — FROM INSIGHT TO PRACTICE
+     ============================================================ -->
+<section class="practices" id="practice">
+  <div class="practices-top">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">From Insight to Practice</span>
+      <h2 class="display-2 serif">Eight Ways to Practice</h2>
+    </div>
+    <div class="carousel-nav">
+      <button aria-label="Scroll left" id="carPrev">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M10 2L4 8L10 14" stroke="currentColor" stroke-width="1.3"/></svg>
+      </button>
+      <button aria-label="Scroll right" id="carNext">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M6 2L12 8L6 14" stroke="currentColor" stroke-width="1.3"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="practice-track" id="practiceTrack" data-reveal-group>
+    <article class="practice-card"><span class="pnum serif">01</span><h3 class="serif">Daily Check-In</h3><p>A short, honest audit: what did I say today that wasn't quite true?</p></article>
+    <article class="practice-card"><span class="pnum serif">02</span><h3 class="serif">One Honest Thing</h3><p>Say one true, slightly exposed thing a day — on purpose, to someone who matters.</p></article>
+    <article class="practice-card"><span class="pnum serif">03</span><h3 class="serif">The Paradoxical Intention</h3><p>Name the mask out loud before you wear it, and watch its grip loosen.</p></article>
+    <article class="practice-card"><span class="pnum serif">04</span><h3 class="serif">The Friend-Test Pause</h3><p>Before answering, ask: would I say this to a close friend, or just what's easiest?</p></article>
+    <article class="practice-card"><span class="pnum serif">05</span><h3 class="serif">Values-Time Audit</h3><p>Compare the values you claim against where your hours actually went this week.</p></article>
+    <article class="practice-card"><span class="pnum serif">06</span><h3 class="serif">Boundary Reps</h3><p>Practice small, low-stakes "no"s until a real one doesn't feel like a crisis.</p></article>
+    <article class="practice-card"><span class="pnum serif">07</span><h3 class="serif">The Unedited Hour</h3><p>One hour a week with no performance required — no audience, no outcome.</p></article>
+    <article class="practice-card"><span class="pnum serif">08</span><h3 class="serif">Naming the Mask</h3><p>Give today's mask a name. What is it protecting you from, right now?</p></article>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 08 — VALUES
+     ============================================================ -->
+<section class="values" id="values-section">
+  <div class="values-inner">
+    <span class="eyebrow" data-reveal>Values</span>
+    <h2 class="display-2 serif" data-reveal>What Do You Actually Value?</h2>
+    <p class="lede" data-reveal>The book draws a line between claiming a value and living it. Choose one below to see the difference.</p>
+
+    <div class="value-chips" id="valueChips" data-reveal>
+      <button class="value-chip active" data-value="Honesty" data-decision="Say the true thing" data-action="You told a friend the plan wasn't working, instead of nodding along again.">Honesty</button>
+      <button class="value-chip" data-value="Family" data-decision="Protect the evening" data-action="You left work on time for dinner, even with an email still unanswered.">Family</button>
+      <button class="value-chip" data-value="Growth" data-decision="Choose the harder path" data-action="You took the project that scared you a little, instead of the safe one.">Growth</button>
+      <button class="value-chip" data-value="Freedom" data-decision="Decline the obligation" data-action="You said no to a commitment that didn't fit, without over-explaining.">Freedom</button>
+      <button class="value-chip" data-value="Faith" data-decision="Make time sacred" data-action="You kept the prayer on time instead of pushing it to 'after this one thing.'">Faith</button>
+      <button class="value-chip" data-value="Craft" data-decision="Redo the work" data-action="You rebuilt the part that was merely fine until it was actually good.">Craft</button>
+      <button class="value-chip" data-value="Courage" data-decision="Have the conversation" data-action="You raised the hard subject you'd been quietly rehearsing for weeks.">Courage</button>
+      <button class="value-chip" data-value="Rest" data-decision="Stop on purpose" data-action="You closed the laptop before the list was finished, and let that be enough.">Rest</button>
+    </div>
+
+    <div class="value-chain" data-reveal>
+      <div class="chain-row">
+        <div class="chain-step"><span class="k">Value</span><span class="v serif" id="chainValue">Honesty</span></div>
+        <span class="chain-arrow">→</span>
+        <div class="chain-step"><span class="k">Decision</span><span class="v serif" id="chainDecision">Say the true thing</span></div>
+        <span class="chain-arrow">→</span>
+        <div class="chain-step"><span class="k">Action</span><span class="v serif" id="chainActionLabel">Today</span></div>
+      </div>
+      <p class="chain-example" id="chainExample">You told a friend the plan wasn't working, instead of nodding along again.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 09 — A LIFELONG PRACTICE
+     ============================================================ -->
+<section class="statement" id="practice-statement" data-theme="dark">
+  <div class="statement-inner">
+    <div class="statement-line" data-statement-1>"Being yourself is not a destination."</div>
+    <div class="statement-line two" data-statement-2>It is a practice.</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 10 — ABOUT THE AUTHOR
+     ============================================================ -->
+<section class="author" id="author">
+  <div class="author-grid">
+    <div data-reveal>
+      <div class="author-mark serif">Saalim<br>Zayed</div>
+      <div class="author-role">Author<b>Being Yourself</b></div>
+    </div>
+    <div class="author-bio" data-reveal>
+      <span class="eyebrow">About the Author</span>
+      <p class="lede" style="margin-top:18px; max-width:60ch;">Saalim Zayed writes at the intersection of psychology and Islamic spirituality, examining what it costs to perform a life instead of living one. Being Yourself is his study of the masks people wear — and the slower, quieter work of taking them off.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 11 — THE BOOK
+     ============================================================ -->
+<section class="the-book dark" id="the-book" data-theme="dark">
+  <div class="book-grid">
+    <div class="book-visual" data-reveal>
+      <img src="assets/book-product.webp" alt="Being Yourself hardcover, front cover with title, author name, and the Hukm Qalbi emblem" id="productBook" width="550" height="668" loading="lazy">
+    </div>
+    <div class="book-copy" data-reveal>
+      <span class="eyebrow">The Book</span>
+      <h2 class="display-2 serif">Being Yourself</h2>
+      <p class="book-sub">The Courage to Stop Performing and Start Living</p>
+      <p class="book-author">Saalim Zayed</p>
+      <div class="book-ctas">
+        <span class="magnetic"><a href="#" class="btn btn-primary">Get the Book</a></span>
+        <span class="magnetic"><a href="#chapters" class="btn btn-ghost">Learn More</a></span>
+        <span class="magnetic"><a href="#excerpt" class="btn btn-ghost">Read an Excerpt</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EXCERPT ANCHOR (placeholder target for nav / hero CTA)
+     ============================================================ -->
+<section class="the-book dark" id="excerpt" style="padding-top:0;" data-theme="dark">
+  <div class="book-grid" style="grid-template-columns:1fr; text-align:center;">
+    <div data-reveal style="max-width:700px; margin:0 auto;">
+      <span class="eyebrow">An Excerpt</span>
+      <h2 class="display-3 serif" style="color:var(--ivory); margin-top:16px;">"Somewhere between the person you present and the person you are, there is a gap. This book is about learning to close it."</h2>
+      <div class="book-ctas" style="justify-content:center; margin-top:34px;">
+        <span class="magnetic"><a href="#" class="btn btn-primary">Read the Full Excerpt</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer" id="contact" data-theme="dark">
+  <div class="footer-top">
+    <div>
+      <div class="footer-mark">Being Yourself</div>
+      <p class="footer-tagline">The Courage to Stop Performing and Start Living — by Saalim Zayed, published by Hukm Qalbi.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a href="#top">Home</a>
+      <a href="#the-book">The Book</a>
+      <a href="#author">The Author</a>
+      <a href="#chapters">Chapters</a>
+      <a href="#excerpt">Excerpt</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <a href="#" aria-label="Instagram (placeholder link)">Instagram</a>
+      <a href="#" aria-label="X / Twitter (placeholder link)">X / Twitter</a>
+      <a href="#" aria-label="Goodreads (placeholder link)">Goodreads</a>
+      <a href="mailto:hello@example.com">hello@example.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Hukm Qalbi. All rights reserved.</span>
+    <span>Saalim Zayed — Being Yourself</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var isTouch = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+  var hasGSAP = typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined";
+  if (hasGSAP) gsap.registerPlugin(ScrollTrigger);
+
+  /* ----------------------------------------------------------
+     NAV — scrolled state + light/dark theming
+     ---------------------------------------------------------- */
+  var nav = document.getElementById("siteNav");
+  var themedSections = Array.prototype.slice.call(document.querySelectorAll("[data-theme]"));
+  var navToggle = document.querySelector(".nav-toggle");
+  var navLinks = document.querySelector(".nav-links");
+
+  function updateNav(){
+    var y = window.scrollY || window.pageYOffset;
+    nav.classList.toggle("scrolled", y > 40);
+
+    var probeY = 46; // point under the fixed nav bar
+    var onDark = false;
+    for (var i = 0; i < themedSections.length; i++){
+      var r = themedSections[i].getBoundingClientRect();
+      if (r.top <= probeY && r.bottom >= probeY){ onDark = true; break; }
+    }
+    nav.classList.toggle("on-dark", onDark);
+  }
+  updateNav();
+  window.addEventListener("scroll", updateNav, { passive: true });
+  window.addEventListener("resize", updateNav);
+
+  if (navToggle && navLinks){
+    navToggle.addEventListener("click", function(){
+      var open = navLinks.classList.toggle("open");
+      navToggle.classList.toggle("open", open);
+      navToggle.innerHTML = open
+        ? '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 1L15 15M15 1L1 15" stroke="currentColor" stroke-width="1.4"/></svg>'
+        : '<svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M0 1H20M0 7H20M0 13H20" stroke="currentColor" stroke-width="1.4"/></svg>';
+      document.body.style.overflow = open ? "hidden" : "";
+    });
+    navLinks.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", function(){
+        navLinks.classList.remove("open");
+        navToggle.classList.remove("open");
+        document.body.style.overflow = "";
+        navToggle.innerHTML = '<svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M0 1H20M0 7H20M0 13H20" stroke="currentColor" stroke-width="1.4"/></svg>';
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     AMBIENT LIGHT — the page's one signature system.
+     A soft cursor-tracked highlight, restrained and consistent
+     across every section.
+     ---------------------------------------------------------- */
+  if (!reduceMotion && !isTouch){
+    var ambient = document.getElementById("ambientLight");
+    var mx = window.innerWidth / 2, my = window.innerHeight * 0.3;
+    var tx = mx, ty = my;
+    window.addEventListener("mousemove", function(e){ tx = e.clientX; ty = e.clientY; }, { passive:true });
+    (function loop(){
+      mx += (tx - mx) * 0.08;
+      my += (ty - my) * 0.08;
+      ambient.style.setProperty("--mx", mx + "px");
+      ambient.style.setProperty("--my", my + "px");
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  /* ----------------------------------------------------------
+     MAGNETIC BUTTONS
+     ---------------------------------------------------------- */
+  if (!reduceMotion && !isTouch){
+    document.querySelectorAll(".magnetic").forEach(function(wrap){
+      var el = wrap.querySelector("a, button");
+      if (!el) return;
+      wrap.addEventListener("mousemove", function(e){
+        var r = wrap.getBoundingClientRect();
+        var relX = e.clientX - (r.left + r.width/2);
+        var relY = e.clientY - (r.top + r.height/2);
+        el.style.transform = "translate(" + (relX*0.28) + "px," + (relY*0.5) + "px)";
+      });
+      wrap.addEventListener("mouseleave", function(){
+        el.style.transform = "translate(0,0)";
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     HERO BOOK — subtle 3D parallax + light sheen
+     ---------------------------------------------------------- */
+  (function(){
+    var stage = document.querySelector(".hero-stage");
+    var book = document.getElementById("heroBook");
+    var sheen = document.getElementById("heroSheen");
+    if (!stage || !book) return;
+
+    if (reduceMotion || isTouch){
+      book.style.transform = "none";
+      return;
+    }
+    stage.addEventListener("mousemove", function(e){
+      var r = stage.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width;   // 0..1
+      var py = (e.clientY - r.top) / r.height;   // 0..1
+      var rx = (py - 0.5) * -10;
+      var ry = (px - 0.5) * 14;
+      book.style.transform = "rotateX(" + rx + "deg) rotateY(" + ry + "deg) translateZ(10px)";
+      if (sheen){
+        sheen.style.opacity = "0.5";
+        sheen.style.background = "radial-gradient(circle at " + (px*100) + "% " + (py*100) + "%, rgba(255,255,255,0.45), rgba(255,255,255,0) 45%)";
+      }
+    });
+    stage.addEventListener("mouseleave", function(){
+      book.style.transform = "rotateX(0deg) rotateY(0deg) translateZ(0)";
+      if (sheen) sheen.style.opacity = "0";
+    });
+  })();
+
+  /* ----------------------------------------------------------
+     PRODUCT BOOK (Section 11) — gentler tilt on hover
+     ---------------------------------------------------------- */
+  (function(){
+    var visual = document.querySelector(".book-visual");
+    var img = document.getElementById("productBook");
+    if (!visual || !img || reduceMotion || isTouch) return;
+    visual.addEventListener("mousemove", function(e){
+      var r = visual.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width;
+      var py = (e.clientY - r.top) / r.height;
+      var rx = (py - 0.5) * -8;
+      var ry = (px - 0.5) * 10;
+      img.style.transform = "rotateX(" + rx + "deg) rotateY(" + ry + "deg)";
+    });
+    visual.addEventListener("mouseleave", function(){
+      img.style.transform = "rotateX(0) rotateY(0)";
+    });
+  })();
+
+  /* ----------------------------------------------------------
+     MASK CARDS (Section 3) — cursor-follow glow + tap to open
+     ---------------------------------------------------------- */
+  document.querySelectorAll(".mask-card").forEach(function(card){
+    card.addEventListener("mousemove", function(e){
+      var r = card.getBoundingClientRect();
+      card.style.setProperty("--px", ((e.clientX - r.left) / r.width * 100) + "%");
+      card.style.setProperty("--py", ((e.clientY - r.top) / r.height * 100) + "%");
+    });
+    card.addEventListener("click", function(){
+      var wasActive = card.classList.contains("active");
+      document.querySelectorAll(".mask-card.active").forEach(function(c){ c.classList.remove("active"); });
+      if (!wasActive) card.classList.add("active");
+    });
+  });
+
+  /* ----------------------------------------------------------
+     CHAPTER TIMELINE (Section 6) — click/keyboard expand +
+     scroll progress rail fill
+     ---------------------------------------------------------- */
+  var chapters = document.querySelectorAll(".chapter");
+  chapters.forEach(function(ch, i){
+    ch.setAttribute("tabindex", "0");
+    ch.addEventListener("click", function(){ setActiveChapter(i); });
+    ch.addEventListener("keydown", function(e){
+      if (e.key === "Enter" || e.key === " "){ e.preventDefault(); setActiveChapter(i); }
+    });
+  });
+  function setActiveChapter(i){
+    chapters.forEach(function(c, idx){ c.classList.toggle("active", idx === i); });
+  }
+  if (chapters.length) setActiveChapter(0);
+
+  /* ----------------------------------------------------------
+     PRACTICE CAROUSEL (Section 7)
+     ---------------------------------------------------------- */
+  (function(){
+    var track = document.getElementById("practiceTrack");
+    var prev = document.getElementById("carPrev");
+    var next = document.getElementById("carNext");
+    if (!track) return;
+    function step(dir){
+      var card = track.querySelector(".practice-card");
+      var amount = card ? card.getBoundingClientRect().width + 20 : 300;
+      track.scrollBy({ left: dir * amount, behavior: reduceMotion ? "auto" : "smooth" });
+    }
+    if (prev) prev.addEventListener("click", function(){ step(-1); });
+    if (next) next.addEventListener("click", function(){ step(1); });
+  })();
+
+  /* ----------------------------------------------------------
+     VALUES (Section 8) — chip → chain
+     ---------------------------------------------------------- */
+  (function(){
+    var chips = document.querySelectorAll(".value-chip");
+    var elValue = document.getElementById("chainValue");
+    var elDecision = document.getElementById("chainDecision");
+    var elLabel = document.getElementById("chainActionLabel");
+    var elExample = document.getElementById("chainExample");
+    if (!chips.length) return;
+    chips.forEach(function(chip){
+      chip.addEventListener("click", function(){
+        chips.forEach(function(c){ c.classList.remove("active"); });
+        chip.classList.add("active");
+        var apply = function(){
+          elValue.textContent = chip.dataset.value;
+          elDecision.textContent = chip.dataset.decision;
+          elLabel.textContent = "Today";
+          elExample.textContent = chip.dataset.action;
+        };
+        if (hasGSAP && !reduceMotion){
+          gsap.to([elValue, elDecision, elExample], { opacity:0, duration:0.15, onComplete:function(){
+            apply();
+            gsap.to([elValue, elDecision, elExample], { opacity:1, duration:0.35 });
+          }});
+        } else { apply(); }
+      });
+    });
+  })();
+
+  /* ----------------------------------------------------------
+     SCROLL-DRIVEN CINEMATICS (GSAP ScrollTrigger)
+     ---------------------------------------------------------- */
+  if (hasGSAP){
+
+    if (!reduceMotion){
+      /* generic reveal for standalone [data-reveal] elements */
+      document.querySelectorAll("[data-reveal]").forEach(function(el){
+        gsap.to(el, {
+          opacity:1, y:0, duration:1.1, ease:"power3.out",
+          scrollTrigger:{ trigger:el, start:"top 88%", once:true }
+        });
+      });
+
+      /* staggered reveal for groups (mask cards, terms, practice cards, timeline) */
+      document.querySelectorAll("[data-reveal-group]").forEach(function(group){
+        var items = group.children;
+        gsap.to(items, {
+          opacity:1, y:0, duration:0.9, ease:"power3.out", stagger:0.08,
+          scrollTrigger:{ trigger:group, start:"top 85%", once:true }
+        });
+      });
+
+      /* Section 02 — mask panels separate as the section enters */
+      var maskStage = document.querySelector(".mask-stage");
+      if (maskStage){
+        gsap.to(maskStage.querySelector(".mask-panel-front"), {
+          x:-34, y:-24, rotate:-3, ease:"none",
+          scrollTrigger:{ trigger:maskStage, start:"top 75%", end:"top 20%", scrub:true }
+        });
+        gsap.to(maskStage.querySelector(".mask-panel-back"), {
+          x:20, y:20, ease:"none",
+          scrollTrigger:{ trigger:maskStage, start:"top 75%", end:"top 20%", scrub:true }
+        });
+      }
+
+      /* Section 06 — rail fill tracks scroll progress through the timeline */
+      var timeline = document.querySelector(".timeline");
+      var railFill = document.getElementById("railFill");
+      if (timeline && railFill){
+        gsap.to(railFill, {
+          height:"100%", ease:"none",
+          scrollTrigger:{ trigger:timeline, start:"top 60%", end:"bottom 60%", scrub:true }
+        });
+      }
+
+      /* Section 06 — auto-advance the active chapter as it centers */
+      chapters.forEach(function(ch, i){
+        ScrollTrigger.create({
+          trigger:ch, start:"top 55%", end:"bottom 45%",
+          onEnter:function(){ setActiveChapter(i); },
+          onEnterBack:function(){ setActiveChapter(i); }
+        });
+      });
+
+      /* Section 09 — pinned crossfade statement */
+      var statement = document.querySelector(".statement");
+      var line1 = document.querySelector("[data-statement-1]");
+      var line2 = document.querySelector("[data-statement-2]");
+      if (statement && line1 && line2 && window.innerWidth > 640){
+        gsap.set(line2, { opacity:0, y:16 });
+        var tl = gsap.timeline({
+          scrollTrigger:{ trigger:statement, start:"top top", end:"+=90%", scrub:true, pin:true }
+        });
+        tl.to(line1, { opacity:0, y:-24, duration:0.5 })
+          .to(line2, { opacity:1, y:0, duration:0.5 }, 0.35);
+      }
+
+      /* Book product image — soft parallax as it scrolls through view */
+      var bookVisual = document.querySelector(".book-visual img");
+      if (bookVisual){
+        gsap.fromTo(bookVisual, { y:40 }, {
+          y:-20, ease:"none",
+          scrollTrigger:{ trigger:bookVisual, start:"top bottom", end:"bottom top", scrub:true }
+        });
+      }
+
+    } else {
+      /* reduced motion: ensure everything is simply visible */
+      document.querySelectorAll("[data-reveal], [data-reveal-group] > *").forEach(function(el){
+        el.style.opacity = 1; el.style.transform = "none";
+      });
+      var l2 = document.querySelector("[data-statement-2]");
+      if (l2) l2.style.opacity = 1;
+    }
+  } else {
+    /* GSAP failed to load — fail gracefully to a fully visible page */
+    document.querySelectorAll("[data-reveal], [data-reveal-group] > *").forEach(function(el){
+      el.style.opacity = 1; el.style.transform = "none";
+    });
+  }
+
+})();
+</script>
+</body>
+</html>
